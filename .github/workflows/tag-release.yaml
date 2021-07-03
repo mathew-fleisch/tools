@@ -19,7 +19,7 @@ jobs:
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
           GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
         run: |
-          REGISTRY_URL=docker.io
-          REGISTRY_APPNAME=mathewfleisch/tools
+          export REGISTRY_URL=docker.io
+          export REGISTRY_APPNAME=mathewfleisch/tools
           wget -qO- https://raw.githubusercontent.com/mathew-fleisch/tools/main/scripts/tag-release.sh | bash
 
