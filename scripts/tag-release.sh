@@ -2,7 +2,7 @@
 
 echo "Tag release, multi-arch-build and push"
 echo "Check environment variables are set..."
-expected="REGISTRY_USERNAME REGISTRY_PASSWORD REGISTRY_URL REGISTRY_APPNAME GIT_TOKEN"
+expected="REGISTRY_USERNAME REGISTRY_PASSWORD REGISTRY_URL REGISTRY_APPNAME GIT_TOKEN REPO_OWNER REPO_NAME"
 for expect in $expected; do
   if [[ -z "${!expect}" ]]; then
     echo "Missing environment variable: $expect"
@@ -23,12 +23,12 @@ commit_message="$(git for-each-ref refs/tags/$tag --format='%(contents)' | head 
 # Container registry credentials stored as environment variables from github secrets
 echo "Creating git release..."
 # Build json with tag + commit message
-curl_data='{"tag_name": "'$tag'", "target_commitish": "main", "name": "tools-'$tag'", "body": "'$commit_message'", "draft": false, "prerelease": false}'
+curl_data='{"tag_name": "'$tag'", "target_commitish": "main", "name": "'$REPO_NAME'-'$tag'", "body": "'$commit_message'", "draft": false, "prerelease": false}'
 # Sanity check (does json render through jq)
 echo "Data: $curl_data"
 echo "$curl_data" | jq '.'
 # Build, print and execute curl to create a new release with the github api
-curl_post="curl -sXPOST -H \"Content-Type: application/json\" -H \"Authorization: token $GIT_TOKEN\" --data '$curl_data' https://api.github.com/repos/mathew-fleisch/tools/releases"
+curl_post="curl -sXPOST -H \"Content-Type: application/json\" -H \"Authorization: token $GIT_TOKEN\" --data '$curl_data' https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases"
 echo "curl: "
 echo "$curl_post"
 release_response="$(eval $curl_post)"
