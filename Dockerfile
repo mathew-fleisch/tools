@@ -23,17 +23,18 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh \
     && chown -R github:runners $ASDF_DATA_DIR \
     && chmod -R g+w $ASDF_DATA_DIR \
     && git clone https://github.com/asdf-vm/asdf.git ${ASDF_DATA_DIR} --branch v0.8.1 \
-    && echo "export ASDF_DATA_DIR=${ASDF_DATA_DIR}" | tee -a ~/.bashrc \
-    && echo ". ${ASDF_DATA_DIR}/asdf.sh" | tee -a ~/.bashrc \
-    && mkdir -p ~/.docker/cli-plugins \
-    && wget $(curl -s https://api.github.com/repos/docker/buildx/releases/latest | jq -r .assets[].browser_download_url | grep $(getArch) | grep -v darwin) -O ~/.docker/cli-plugins/docker-buildx \
-    && chmod +x ~/.docker/cli-plugins/docker-buildx \
+    && echo "export ASDF_DATA_DIR=${ASDF_DATA_DIR}" | tee -a /root/.bashrc /home/github/.bashrc \
+    && echo ". ${ASDF_DATA_DIR}/asdf.sh" | tee -a /root/.bashrc /home/github/.bashrc \
+    && mkdir -p /root/.docker/cli-plugins \
+    && mkdir -p /home/github/.docker/cli-plugins \
+    && wget $(curl -s https://api.github.com/repos/docker/buildx/releases/latest | jq -r .assets[].browser_download_url | grep $(getArch) | grep -v darwin) -O /root/.docker/cli-plugins/docker-buildx \
+    && cp /root/.docker/cli-plugins/docker-buildx /home/github/.docker/cli-plugins/docker-buildx \
+    && chmod +x /root/.docker/cli-plugins/docker-buildx \
+    && chmod +x /home/github/.docker/cli-plugins/docker-buildx \
     && docker buildx create --name mbuilder \
     && docker buildx use mbuilder \
     && docker buildx inspect --bootstrap \
     && wget https://raw.githubusercontent.com/fsaintjacques/semver-tool/master/src/semver -O /usr/local/bin/semver \
     && chmod +x /usr/local/bin/semver
-USER root
-WORKDIR /root
 
 CMD /bin/bash
