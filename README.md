@@ -12,3 +12,7 @@ The [docker plugin buildx](https://api.github.com/repos/docker/buildx) uses thes
 ```
 binfmt-support qemu-user-static
 ```
+
+## Projects
+
+This container is used as a base for other projects that expect certain tools to be pre-installed. The [docker-dev-env](https://github.com/mathew-fleisch/docker-dev-env) project is intended to provide a development environment with devops related tools pre-installed. The [github-actions-runner](https://github.com/mathew-fleisch/github-actions-runner) project also has many tools pre-installed, but also includes the agent to run the container as a github-action self-hosted runner. 
