@@ -6,7 +6,7 @@ ENV ASDF_DATA_DIR /opt/asdf
 # Install apt dependencies
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh \
     && apt update \
-    && DEBIAN_FRONTEND=noninteractive apt install -y curl wget apt-utils python3 python3-pip make build-essential openssl lsb-release libssl-dev apt-transport-https ca-certificates iputils-ping git vim jq zip sudo binfmt-support qemu-user-static ffmpeg rsync \
+    && DEBIAN_FRONTEND=noninteractive apt install -y curl wget apt-utils python3 python3-pip make build-essential openssl lsb-release libssl-dev apt-transport-https ca-certificates iputils-ping git vim jq zip sudo binfmt-support qemu-user-static ffmpeg rsync rbenv ruby-build \
     && curl -sSL https://get.docker.com/ | sh \
     && echo "%sudo ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
     && apt-get clean \
