@@ -12,7 +12,7 @@ done
 
 echo "This action will grab the latest versions for each tool listed in the .tool-versions file"
 echo "Check environment variables are set..."
-expected="GIT_TOKEN REPO_OWNER REPO_NAME REPO_EMAIL BRANCH"
+expected="GIT_TOKEN REPO_OWNER REPO_NAME REPO_EMAIL REPO_BRANCH"
 for expect in $expected; do
   if [[ -z "${!expect}" ]]; then
     echo "Missing Github Secret: $expect"
@@ -84,7 +84,7 @@ if [[ -n "$(diff .tool-versions .tool-versions-orig)" ]]; then
   git status
   git add .tool-versions
   git commit -m "Get new dependency versions (asdf)"
-  git push origin main
+  git push origin $REPO_BRANCH
   currentTag=$(git describe --tags)
   newTag=$(semver bump patch $currentTag)
   git tag "v${newTag}"
