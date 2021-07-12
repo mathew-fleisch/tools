@@ -23,5 +23,6 @@ jobs:
           export REGISTRY_APPNAME=mathewfleisch/tools
           export REPO_OWNER=mathew-fleisch
           export REPO_NAME=tools
+          export REPO_BRANCH=main
           wget -qO- https://raw.githubusercontent.com/mathew-fleisch/tools/main/scripts/tag-release.sh | bash
 
