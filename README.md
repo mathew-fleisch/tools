@@ -2,6 +2,7 @@
 This repo will hold common tools/scripts/containers that can be pulled into other projects
 
 ## Docker Container
+[![Release CI: multi-arch container build & push](https://github.com/mathew-fleisch/tools/actions/workflows/tag-release.yaml/badge.svg)](https://github.com/mathew-fleisch/tools/actions/workflows/tag-release.yaml)
 
 The [Dockerfile](Dockerfile) in this repository installs some commonly used tools to be used as a base for other projects. Users are also set up for use with github-action runners and with "docker-in-docker" python3 is installed along with vim, git and other common command line tools.
 
