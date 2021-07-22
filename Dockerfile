@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM buster-slim:latest
 LABEL maintainer="Mathew Fleisch <mathew.fleisch@gmail.com>"
 
 COPY scripts/getArch /usr/local/bin/getArch
