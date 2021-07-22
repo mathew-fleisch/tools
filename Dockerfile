@@ -1,4 +1,4 @@
-FROM buster-slim:latest
+FROM debian:buster-slim
 LABEL maintainer="Mathew Fleisch <mathew.fleisch@gmail.com>"
 
 COPY scripts/getArch /usr/local/bin/getArch
