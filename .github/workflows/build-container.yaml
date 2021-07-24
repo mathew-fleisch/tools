@@ -1,8 +1,8 @@
-# Name:        build-common-base-container.yaml
+# Name:        build-container.yaml
 # Author:      Mathew Fleisch <mathew.fleisch@gmail.com>
 # Description: This action will build and push a docker container, when triggered by
 #              pushing a new git tag (that starts with the letter 'v').
-name: Build common-base containers
+name: Build Tools containers
 on:
   push:
     tags:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Build and Push common-base container
+    name: Build and Push Tools container
     runs-on: self-hosted
     steps:
       -
@@ -42,9 +42,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          context: containers/common-base/.
+          context: .
           platforms: linux/amd64,linux/arm64
-          tags: mathewfleisch/common-base:latest,mathewfleisch/common-base:${{ env.RELEASE_VERSION }}
+          tags: mathewfleisch/tools:latest,mathewfleisch/tools:${{ env.RELEASE_VERSION }}
 
       -
         name: Cut Github Release
