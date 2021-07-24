@@ -52,4 +52,3 @@ jobs:
         with:
           token: ${{ secrets.GIT_TOKEN }}
           allowUpdates: true
-          artifacts: "bin/*"
