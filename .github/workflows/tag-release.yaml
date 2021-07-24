@@ -6,7 +6,7 @@ name: Release tools
 on:
   push:
     tags:
-      - 'v*'
+      - 'disabled*'
 jobs:
   build:
     name: Release tools
