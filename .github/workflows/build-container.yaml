@@ -45,6 +45,8 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           tags: mathewfleisch/tools:latest,mathewfleisch/tools:${{ env.RELEASE_VERSION }}
+          cache-from: type=registry,ref=mathewfleisch/tools:latest
+          cache-to: type=inline
 
       -
         name: Cut Github Release
