@@ -12,6 +12,8 @@ done
 
 echo "This action will grab the latest versions for each tool listed in the .tool-versions file"
 echo "Check environment variables are set..."
+REPO_EMAIL="${REPO_EMAIL:-github-actions@github.com}"
+REPO_OWNER="${REPO_OWNER:-github-actions}"
 expected="GIT_TOKEN REPO_OWNER REPO_NAME REPO_EMAIL REPO_BRANCH"
 for expect in $expected; do
   if [[ -z "${!expect}" ]]; then

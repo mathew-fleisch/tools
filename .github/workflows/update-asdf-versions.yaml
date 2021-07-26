@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     name: Update asdf versions
-    runs-on: self-hosted
+    runs-on: generic-runner
     steps:
       -
         name: Checkout
@@ -23,9 +23,9 @@ jobs:
         env:
           REPO_EMAIL: ${{ secrets.REPO_EMAIL }}
           GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
-          REPO_OWNER: "mathew-fleisch"
-          REPO_NAME: "tools"
-          REPO_BRANCH: "main"
+          REPO_OWNER: mathew-fleisch
+          REPO_NAME: tools
+          REPO_BRANCH: main
         # See the tools repo for more information: https://github.com/mathew-fleisch/tools
         run: ./scripts/update-asdf-to-latest.sh
 
