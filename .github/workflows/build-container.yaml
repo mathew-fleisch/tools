@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     name: Build and Push Tools container
-    runs-on: self-hosted
+    runs-on: generic-runner
     steps:
       -
         name: Checkout
