@@ -13,8 +13,8 @@ done
 echo "This action will grab the latest versions for each tool listed in the .tool-versions file"
 echo "Check environment variables are set..."
 REPO_EMAIL="${REPO_EMAIL:-github-actions@github.com}"
-REPO_OWNER="${REPO_OWNER:-github-actions}"
-expected="GIT_TOKEN REPO_OWNER REPO_NAME REPO_EMAIL REPO_BRANCH"
+REPO_USER="${REPO_USER:-github-actions}"
+expected="GIT_TOKEN REPO_OWNER REPO_NAME REPO_EMAIL REPO_USER REPO_BRANCH"
 for expect in $expected; do
   if [[ -z "${!expect}" ]]; then
     echo "Missing Github Secret: $expect"
@@ -36,7 +36,7 @@ cp .tool-versions .tool-versions-orig
 
 # Set the user to allow the script to push to Github
 git config --global user.email "${REPO_EMAIL}"
-git config --global user.name "${REPO_OWNER}"
+git config --global user.name "${REPO_USER}"
 
 echo "Ensure host has plugins installed to grab latest versions"
 while IFS= read -r line; do 
