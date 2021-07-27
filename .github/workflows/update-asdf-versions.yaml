@@ -6,8 +6,8 @@
 #              the action will automatically tag a new version number.
 name: Update asdf versions
 on:
-  schedule: # trigger daily at 07:40am PT (14:40UTC)
-    - cron: '40 14 * * *'
+  schedule: # trigger daily at 12:10am PT (07:40UTC)
+    - cron: '10 7 * * *'
   repository_dispatch:
     types:
       - trigger-asdf-update
