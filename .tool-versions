@@ -2,11 +2,11 @@ awscli 2.2.26
 bat 0.18.2
 fzf 0.27.2
 gcloud 351.0.0
-github-cli 1.13.1
+github-cli 1.14.0
 golang 1.16.6
 helm 3.6.3
 k9s 0.24.14
-kubectl 1.21.3
+kubectl 1.22.0
 kubectx 0.9.4
 kustomize 4.2.0
 shellcheck 0.7.2
