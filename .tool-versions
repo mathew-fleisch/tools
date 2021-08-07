@@ -5,7 +5,7 @@ gcloud 351.0.0
 github-cli 1.14.0
 golang 1.16.7
 helm 3.6.3
-k9s 0.24.14
+k9s 0.24.15
 kubectl 1.22.0
 kubectx 0.9.4
 kustomize 4.2.0
