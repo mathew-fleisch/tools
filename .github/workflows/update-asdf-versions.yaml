@@ -24,7 +24,6 @@ jobs:
 
       - name: "Update asdf versions"
         env:
-          REPO_EMAIL: ${{ secrets.REPO_EMAIL }}
           GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
           REPO_OWNER: mathew-fleisch
           REPO_NAME: tools
