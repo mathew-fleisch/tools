@@ -84,7 +84,7 @@ echo "--------------------------"
 if [[ -n "$(diff .tool-versions .tool-versions-orig)" ]]; then
   rm -rf .tool-versions-orig
   git status
-  currentTag=$(git describe --tags)
+  currentTag=$(git describe --tags | sed -e 's/-.*//g')
   newTag=$(semver bump patch $currentTag)
   if [[ -z "${newTag}" ]]; then
     echo "Could not bump new semver from: ${currentTag}"
