@@ -84,11 +84,15 @@ echo "--------------------------"
 if [[ -n "$(diff .tool-versions .tool-versions-orig)" ]]; then
   rm -rf .tool-versions-orig
   git status
+  currentTag=$(git describe --tags)
+  newTag=$(semver bump patch $currentTag)
+  if [[ -z "${newTag}" ]]; then
+    echo "Could not bump new semver from: ${currentTag}"
+    exit 1
+  fi
   git add .tool-versions
   git commit -m "Get new dependency versions (asdf)"
   git push origin $REPO_BRANCH
-  currentTag=$(git describe --tags)
-  newTag=$(semver bump patch $currentTag)
   git tag "v${newTag}"
   git push origin "v${newTag}"
 else
