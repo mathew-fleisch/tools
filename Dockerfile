@@ -29,9 +29,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh \
     && chmod +x /home/github/.docker/cli-plugins/docker-buildx \
     && docker buildx create --name mbuilder \
     && docker buildx use mbuilder \
-    && docker buildx inspect --bootstrap \
-    && wget https://raw.githubusercontent.com/fsaintjacques/semver-tool/master/src/semver -O /usr/local/bin/semver \
-    && chmod +x /usr/local/bin/semver
+    && docker buildx inspect --bootstrap
 
 # Install asdf
 WORKDIR /root
@@ -45,9 +43,5 @@ RUN mkdir -p $ASDF_DATA_DIR \
     && asdf update \
     && while IFS= read -r line; do asdf plugin add $(echo "$line" | awk '{print $1}'); done < .tool-versions \
     && asdf install
-    
-    # This won't work because asdf errors out too easily...
-    # I am leaving this here because I've made this mistake before 
-    # && cat /root/.tool-versions | awk '{print $1}' | xargs -I {} asdf plugin add {}
 
 CMD /bin/bash -c '. ${ASDF_DATA_DIR}/asdf.sh && /bin/bash'
