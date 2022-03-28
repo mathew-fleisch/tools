@@ -79,7 +79,8 @@ echo "--------------------------"
 echo "To apply run: asdf install"
 echo "--------------------------"
 
-
+# In case semver was updated, set the current global version to the newest version
+asdf global semver latest
 # If diff returns a result, there are updates that need to be pushed
 if [[ -n "$(diff .tool-versions .tool-versions-orig)" ]]; then
   rm -rf .tool-versions-orig
