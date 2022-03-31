@@ -11,7 +11,9 @@ on:
 jobs:
   build:
     name: Build and Push Tools container
-    runs-on: ubuntu-latest
+    runs-on:
+      - self-hosted
+      - generic-runner
     steps:
       -
         name: Checkout
@@ -44,7 +46,9 @@ jobs:
           push: true
           context: .
           platforms: linux/amd64,linux/arm64
-          tags: mathewfleisch/tools:latest,mathewfleisch/tools:${{ env.RELEASE_VERSION }}
+          tags: |
+            mathewfleisch/tools:latest
+            mathewfleisch/tools:${{ env.RELEASE_VERSION }}
           cache-from: type=registry,ref=mathewfleisch/tools:latest
           cache-to: type=inline
 
