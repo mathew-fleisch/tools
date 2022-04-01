@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+    timeout-minutes: 120
     name: Build and Push Tools container
     runs-on:
       - self-hosted
