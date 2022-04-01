@@ -7,8 +7,8 @@ ENV ASDF_DATA_DIR /opt/asdf
 COPY .tool-versions /root/.tool-versions
 COPY pin /root/pin
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh \
-    && apt update \
-    && DEBIAN_FRONTEND=noninteractive apt install -y curl wget apt-utils python3 python3-pip make build-essential openssl lsb-release libssl-dev apt-transport-https ca-certificates iputils-ping git vim jq zip sudo binfmt-support qemu-user-static ffmpeg rsync rbenv ruby-build \
+    && apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y curl wget apt-utils python3 python3-pip make build-essential openssl lsb-release libssl-dev apt-transport-https ca-certificates iputils-ping git vim jq zip sudo binfmt-support qemu-user-static ffmpeg rsync rbenv ruby-build liblttng-ust-ctl4 liblttng-ust0 liburcu6 zlib1g-dev \
     && curl -sSL https://get.docker.com/ | sh \
     && echo "%sudo ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
     && apt-get clean \
