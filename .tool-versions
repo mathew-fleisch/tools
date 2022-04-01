@@ -8,7 +8,6 @@ helm 3.8.1
 k9s 0.25.18
 kubectl 1.23.5
 kubectx 0.9.4
-kustomize 4.5.3
 packer 1.8.0
 semver 3.3.0
 shellcheck 0.8.0
