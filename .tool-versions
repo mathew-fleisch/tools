@@ -1,7 +1,7 @@
-awscli 2.5.2
+awscli 2.5.4
 bat 0.20.0
-fzf 0.29.0
-gcloud 379.0.0
+fzf 0.30.0
+gcloud 380.0.0
 github-cli 2.7.0
 golang 1.18
 helm 3.8.1
