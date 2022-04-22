@@ -8,7 +8,7 @@ COPY .tool-versions /root/.tool-versions
 COPY pin /root/pin
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh \
     && apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y curl wget apt-utils python3 python3-pip make build-essential openssl lsb-release libssl-dev apt-transport-https ca-certificates iputils-ping git vim jq zip sudo binfmt-support qemu-user-static ffmpeg rsync rbenv ruby-build liblttng-ust-ctl4 liblttng-ust0 liburcu6 zlib1g-dev \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y curl wget apt-utils python3 python3-pip make build-essential openssl lsb-release libssl-dev apt-transport-https ca-certificates iputils-ping git vim jq zip sudo binfmt-support qemu-user-static ffmpeg rsync rbenv ruby-build zlib1g-dev \
     && curl -sSL https://get.docker.com/ | sh \
     && echo "%sudo ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
     && apt-get clean \
@@ -40,8 +40,7 @@ RUN mkdir -p $ASDF_DATA_DIR \
     && echo "export ASDF_DATA_DIR=${ASDF_DATA_DIR}" | tee -a /root/.bashrc /home/github/.bashrc | tee -a /root/.bashrc \
     && echo ". ${ASDF_DATA_DIR}/asdf.sh" | tee -a /root/.bashrc /home/github/.bashrc | tee -a /root/.bashrc \
     && . $ASDF_DATA_DIR/asdf.sh \
-    && asdf update \
-    && while IFS= read -r line; do asdf plugin add $(echo "$line" | awk '{print $1}'); done < .tool-versions \
+    && cat .tool-versions | awk '{print $1}' | sort | uniq | xargs -I {} asdf plugin add {} \
     && asdf install
 
 CMD /bin/bash -c '. ${ASDF_DATA_DIR}/asdf.sh && /bin/bash'
