@@ -1,12 +1,12 @@
-awscli 2.7.22
+awscli 2.7.25
 bat 0.21.0
 fzf 0.32.1
-gcloud 397.0.0
+gcloud 398.0.0
 github-cli 2.14.4
 golang 1.19
 helm 3.9.3
 k9s 0.26.3
-kubectl 1.24.3
+kubectl 1.24.4
 kubectx 0.9.4
 packer 1.8.3
 semver 3.3.0
