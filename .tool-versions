@@ -1,12 +1,12 @@
-awscli 2.7.31
+awscli 2.7.33
 bat 0.22.1
 fzf 0.33.0
-gcloud 401.0.0
+gcloud 402.0.0
 github-cli 2.15.0
 golang 1.19.1
 helm 3.9.4
 k9s 0.26.3
-kubectl 1.25.0
+kubectl 1.25.1
 kubectx 0.9.4
 packer 1.8.3
 semver 3.3.0
@@ -14,5 +14,5 @@ shellcheck 0.8.0
 shfmt 3.5.1
 terraform 0.12.30
 terraform latest
-tflint 0.40.0
+tflint 0.40.1
 yq 4.27.5
