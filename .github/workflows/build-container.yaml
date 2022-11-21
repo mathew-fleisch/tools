@@ -12,9 +12,9 @@ jobs:
   build:
     timeout-minutes: 120
     name: Build and Push Tools container
-    runs-on:
-      - self-hosted
-      - generic-runner
+    runs-on: ubuntu-latest
+      # - self-hosted
+      # - generic-runner
     steps:
       -
         name: Checkout
