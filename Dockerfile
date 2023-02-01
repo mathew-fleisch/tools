@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:23.04
 LABEL maintainer="Mathew Fleisch <mathew.fleisch@gmail.com>"
 # The "kitchen sink" of a Dockerfile that includes many tools used in infrastructure/devops teams
 COPY scripts/get-latest-docker-buildx-release-url.sh /root/get-latest-docker-buildx-release-url.sh
