@@ -26,10 +26,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh \
     && wget $(/root/get-latest-docker-buildx-release-url.sh) -O /root/.docker/cli-plugins/docker-buildx \
     && cp /root/.docker/cli-plugins/docker-buildx /home/github/.docker/cli-plugins/docker-buildx \
     && chmod +x /root/.docker/cli-plugins/docker-buildx \
-    && chmod +x /home/github/.docker/cli-plugins/docker-buildx \
-    && docker buildx create --name mbuilder \
-    && docker buildx use mbuilder \
-    && docker buildx inspect --bootstrap
+    && chmod +x /home/github/.docker/cli-plugins/docker-buildx
 
 # Install asdf
 WORKDIR /root
